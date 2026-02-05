@@ -186,4 +186,22 @@ resource "aws_s3_bucket_public_access_block" "processed_block_public" {
 
 
 ```
+### Step 9: Create Logs Bucket
+
+Add the following
+
+```
+resource "aws_s3_bucket" "logs_bucket" {
+  bucket = "${var.project_name}-logs"
+
+  tags = {
+    Layer   = "logs"
+    Project = var.project_name
+  }
+}
+
+```
+
+
+
 
