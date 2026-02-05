@@ -43,7 +43,7 @@ cd module-04-s3-terraform
 
 ### Step 2: Create variables.tf
 
-In VS Studio, open the created folder, create the _variables.tf_ in the subfolder and add the following.
+In VS Studio, open the created folder, create the _variables.tf_ in the subfolder, and add the following.
 
 ```
 variable "aws_region" {
@@ -53,13 +53,14 @@ variable "aws_region" {
 
 variable "project_name" {
   type    = string
-  default = "aws-data-engineering"
+  default = "aws-data-engineering-kevins"
 }
 
 ```
+The project name _aws-data-engineering-kevins_ is going to be our prefix for the S3 bucket
 
 ### Step 3: Create main.tf
-Still within the subfolder, create a new file named _main.tf_. This is going to carry the terraform and provider.
+Still within the subfolder, create a new file named _main.tf_. This will include the Terraform and provider.
 
 ```
 terraform {
@@ -83,11 +84,11 @@ This is where raw data is stored. Under _main.tf_, add the following
 
 ```
 resource "aws_s3_bucket" "raw_bucket" {
-  bucket = "${var.aws-data-engineering-kevins}-raw-data"
+  bucket = "${var.project_name}-raw-data"
 
   tags = {
     Layer   = "raw"
-    Project = var.aws-data-engineering-kevins
+    Project = var.project_name
   }
 }
 
