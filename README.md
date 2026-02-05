@@ -78,7 +78,20 @@ provider "aws" {
 }
 
 ```
+### Step 4: Create Raw Data Bucket
+This is where raw data is stored. Under _main.tf_, add the following
 
+```
+resource "aws_s3_bucket" "raw_bucket" {
+  bucket = "${var.aws-data-engineering-kevins}-raw-data"
+
+  tags = {
+    Layer   = "raw"
+    Project = var.aws-data-engineering-kevins
+  }
+}
+
+```
 
 
 
