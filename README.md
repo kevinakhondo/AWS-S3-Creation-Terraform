@@ -229,5 +229,30 @@ terraform plan
 terraform apply
 
 ```
+## OutPuts
+Once you run:
+
+```
+terraform init
+terraform plan
+```
+You should see
+<img width="1073" height="1050" alt="image" src="https://github.com/user-attachments/assets/1ae72a1a-acfb-4fb1-97e6-8d48595e18db" />
+
+The final step is to run:
+
+```
+terraform apply
+```
+When prompted, type yes.
+
+<img width="1073" height="922" alt="image" src="https://github.com/user-attachments/assets/b0c86414-3fd5-41c9-a095-956254c7e6d0" />
+
+The above is the final output.
+
+Go to your aws console, login and search S3. Confirm you can see this
+
+<img width="1680" height="922" alt="image" src="https://github.com/user-attachments/assets/5340a633-bfa4-44ec-9e1b-519d8eb1d676" />
 
 
+Congratulations!
