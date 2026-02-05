@@ -139,6 +139,51 @@ resource "aws_s3_bucket_public_access_block" "raw_block_public" {
 }
 
 ```
+### Step 8: Create Processed Data Bucket
+Add the following
+
+```
+resource "aws_s3_bucket" "processed_bucket" {
+  bucket = "${var.project_name}-processed-data"
+
+  tags = {
+    Layer   = "processed"
+    Project = var.project_name
+  }
+}
+
+```
+For this, we shall repeat the same process for versioning, encryption, and public as below
+
+```
+#Enable Versioning on Processed bucket
+resource "aws_s3_bucket_versioning" "processed_versioning" {
+  bucket = aws_s3_bucket.processed_bucket.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+#Enable Server-side Encryption on processed bucket
+resource "aws_s3_bucket_server_side_encryption_configuration" "processed_encryption" {
+  bucket = aws_s3_bucket.processed_bucket.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
+}
+#Block public access on processed bucket
+resource "aws_s3_bucket_public_access_block" "processed_block_public" {
+  bucket = aws_s3_bucket.processed_bucket.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
 
 
+```
 
