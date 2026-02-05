@@ -201,7 +201,33 @@ resource "aws_s3_bucket" "logs_bucket" {
 }
 
 ```
+### Step 10: Create outputs.tf
 
+This will be used by IAM and EC2.
+Create outputs.tf and add the following:
 
+```
+output "raw_bucket_name" {
+  value = aws_s3_bucket.raw_bucket.bucket
+}
+
+output "processed_bucket_name" {
+  value = aws_s3_bucket.processed_bucket.bucket
+}
+
+output "logs_bucket_name" {
+  value = aws_s3_bucket.logs_bucket.bucket
+}
+
+```
+
+### Step 10: Apply Terraform
+
+```
+terraform init
+terraform plan
+terraform apply
+
+```
 
 
