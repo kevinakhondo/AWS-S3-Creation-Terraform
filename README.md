@@ -107,8 +107,22 @@ resource "aws_s3_bucket_versioning" "raw_versioning" {
 }
 
 ```
+### Step 6: Enable Server-side Encryption
 
+In _main.tf_, add the following
 
+```
+resource "aws_s3_bucket_server_side_encryption_configuration" "raw_encryption" {
+  bucket = aws_s3_bucket.raw_bucket.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
+}
+
+```
 
 
 
