@@ -124,6 +124,21 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "raw_encryption" {
 
 ```
 
+### Step 7: Block public Access
+This is going to prevent data leakage.
+In _main.tf_, add the following
+
+```
+resource "aws_s3_bucket_public_access_block" "raw_block_public" {
+  bucket = aws_s3_bucket.raw_bucket.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+```
 
 
 
