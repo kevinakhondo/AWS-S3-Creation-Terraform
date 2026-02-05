@@ -93,7 +93,20 @@ resource "aws_s3_bucket" "raw_bucket" {
 }
 
 ```
+### Step 5: Enable Versioning.
+This will help in data recovery and audit.
+In _main.tf_, add the following
 
+```
+resource "aws_s3_bucket_versioning" "raw_versioning" {
+  bucket = aws_s3_bucket.raw_bucket.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+```
 
 
 
