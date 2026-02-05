@@ -40,3 +40,30 @@ cd aws-data-engineering
 mkdir -p module-04-s3-terraform
 cd module-04-s3-terraform
 ```
+
+### Step 2: Create variables.tf
+
+In VS Studio, open the created folder, create the variables.tf in the subfolder and add the following.
+
+```
+variable "aws_region" {
+  type    = string
+  default = "us-east-1"
+}
+
+variable "project_name" {
+  type    = string
+  default = "aws-data-engineering"
+}
+
+```
+
+
+
+
+
+
+
+
+
+
