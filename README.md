@@ -43,7 +43,7 @@ cd module-04-s3-terraform
 
 ### Step 2: Create variables.tf
 
-In VS Studio, open the created folder, create the variables.tf in the subfolder and add the following.
+In VS Studio, open the created folder, create the _variables.tf_ in the subfolder and add the following.
 
 ```
 variable "aws_region" {
@@ -58,7 +58,26 @@ variable "project_name" {
 
 ```
 
+### Step 3: Create main.tf
+Still within the subfolder, create a new file named _main.tf_. This is going to carry the terraform and provider.
 
+```
+terraform {
+  required_version = ">= 1.5.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = var.aws_region
+}
+
+```
 
 
 
